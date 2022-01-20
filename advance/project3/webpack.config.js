@@ -14,7 +14,11 @@ module.exports = {
   },
   // 打包模式 prodoction / development
   mode: 'development',
+  // 配置source-map
   devtool: 'inline-source-map',
+  devServer: {
+    static: "./dist"
+  },
   // 插件配置
   plugins: [
     // 再打包后的文件夹中生成一个html文件，来引入打包好的js文件等
