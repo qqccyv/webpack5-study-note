@@ -8,7 +8,9 @@ module.exports = {
     // 目标文件名
     filename: 'bundle.js',
     // 目标路径 绝对路径
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './dist'),
+    // 打包前清理目标文件夹
+    clean: true,
   },
   // 打包模式 prodoction / development
   mode: 'none',
