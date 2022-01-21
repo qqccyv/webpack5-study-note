@@ -18,6 +18,7 @@ module.exports = {
   mode: 'development',
   // 配置source-map
   devtool: 'inline-source-map',
+  // webpack-dev-server 开发配置
   devServer: {
     static: "./dist"
   },
@@ -38,13 +39,29 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.png/,
+        test: /\.png$/,
+        // 导出资源的源代码。之前通过使用 raw-loader 实现。 类似于 http://localhost:3000/xxx/xxx.png
         type: 'asset/resource',
         generator: {
           // 静态资源输出命名，优先级高
           filename: 'static/[contenthash][name][ext]'
         }
-      }
+      },
+      {
+        test: /\.svg$/,
+        // 导出资源的源代码。之前通过使用 raw-loader 实现。  类似于 	data:image/svg+xml;base64,xxxxxx
+        type: 'asset/inline',
+      },
+      {
+        test: /\.txt$/,
+        // 导出资源的源代码。之前通过使用 raw-loader 实现。
+        type: 'asset/source',
+      },
+      {
+        test: /\.gif$/,
+        // 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资源体积限制实现。
+        type: 'asset',
+      },
     ]
   },
 }
