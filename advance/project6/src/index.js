@@ -3,8 +3,8 @@ import imageSrc from '../assets/logo.png';
 import svgUrl from '../assets/aqzx_img.svg';
 import exampleText from '../assets/example.txt';
 import gif from '../assets/micLoading.gif';
-import  './style.css';
-import  './style.less';
+import './style.css';
+import './style.less';
 
 
 
@@ -28,3 +28,5 @@ document.body.appendChild(textBox)
 const gifImg = document.createElement('img');
 gifImg.src = gif;
 document.body.appendChild(gifImg)
+
+

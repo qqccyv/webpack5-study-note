@@ -43,7 +43,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     })
-    ],
+  ],
   // 特定模块的处理方式
   module: {
     rules: [
@@ -82,8 +82,21 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         // 在不将css样式插入html头部style标签后，需要将MiniCssExtractPlugin插件附带的loader替换掉原有style-loader
-        use: [MiniCssExtractPlugin.loader,'css-loader','less-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       },
+      // 将es6+的语法转换为es5语法
+      {
+        test: /\.m?js$/,
+        // 不包括哪些文件
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime']
+          }
+        }
+      }
     ]
   },
   // 优化配置
