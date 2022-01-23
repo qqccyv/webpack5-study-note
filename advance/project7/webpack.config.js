@@ -4,11 +4,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
   // 入口
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    anothor: './src/anothor.js'
+  },
   // 出口配置
   output: {
     // 目标文件名
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     // 目标路径 绝对路径
     path: path.resolve(__dirname, './dist'),
     // 打包前清理目标文件夹
