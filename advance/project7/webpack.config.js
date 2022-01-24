@@ -3,10 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
-  // 入口
+
   entry: {
+    // 第一种纯分包 多入口
     index: './src/index.js',
-    anothor: './src/anothor.js'
+    anothor: './src/anothor.js',
+    // 第二种分包，手动指定公共依赖
+    // index: {
+    //   import: './src/index.js',
+    //   dependOn: 'shared',
+    // },
+    // anothor: {
+    //   import: './src/anothor.js',
+    //   dependOn: 'shared',
+    // },
+    // shared: ['lodash'],
   },
   // 出口配置
   output: {
@@ -111,5 +122,10 @@ module.exports = {
       // `...`,
       new CssMinimizerPlugin(),
     ],
+    // 第二种分包 使用webpack4+ 内置分包插件
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+    },
   },
 }

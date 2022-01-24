@@ -28,6 +28,24 @@ document.body.appendChild(textBox)
 
 const gifImg = document.createElement('img');
 gifImg.src = gif;
-document.body.appendChild(gifImg)
+document.body.appendChild(gifImg);
+
+
+// 第三种分包方法 动态加载   第一种用法懒加载
+let btn = document.createElement('button');
+btn.innerText = '点击使用加法'
+btn.addEventListener('click', () => {
+  // 指定包名 prefetch(预获取)：将来某些导航下可能需要的资源
+  // import(/* webpackChunkName: 'math' *//* webpackPrefetch: true */'./math').then(({ default: add }) => {
+  //   console.log(add(1, 2));
+  //  }
+  // 指定包名 preload(预加载)：当前导航下可能需要资源
+  import(/* webpackChunkName: 'math' *//* webpackPreload: true */'./math').then(({ default: add }) => {
+    console.log(add(1, 2));
+  }
+  )
+}
+)
+document.body.appendChild(btn)
 
 
