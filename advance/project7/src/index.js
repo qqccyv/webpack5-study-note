@@ -35,15 +35,15 @@ document.body.appendChild(gifImg);
 let btn = document.createElement('button');
 btn.innerText = '点击使用加法'
 btn.addEventListener('click', () => {
-  // 指定包名 prefetch(预获取)：将来某些导航下可能需要的资源
-  // import(/* webpackChunkName: 'math' *//* webpackPrefetch: true */'./math').then(({ default: add }) => {
-  //   console.log(add(1, 2));
-  //  }
-  // 指定包名 preload(预加载)：当前导航下可能需要资源
-  import(/* webpackChunkName: 'math' *//* webpackPreload: true */'./math').then(({ default: add }) => {
+  // 指定包名 prefetch(预获取)：将来某些导航下可能需要的资源  再浏览器空闲的时候先预加载，然后使用的时候再引入，会更快
+  import(/* webpackChunkName: 'math' *//* webpackPrefetch: true */'./math').then(({ default: add }) => {
     console.log(add(1, 2));
-  }
-  )
+  })
+  // 指定包名 preload(预加载)：当前导航下可能需要资源  在主包引入的时候同步加载，主要用到比较重要的一些资源上面，要慎用。
+  // import(/* webpackChunkName: 'math' *//* webpackPreload: true */'./math').then(({ default: add }) => {
+  //   console.log(add(1, 2));
+  // }
+  // )
 }
 )
 document.body.appendChild(btn)
