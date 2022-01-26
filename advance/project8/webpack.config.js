@@ -28,7 +28,9 @@ module.exports = {
     // 打包前清理目标文件夹
     clean: true,
     // 总体的静态资源输出命名，优先级较低
-    assetModuleFilename: 'images/[contenthash][name][ext]'
+    assetModuleFilename: 'images/[contenthash][name][ext]',
+    // 公共路径的配置
+    publicPath: 'http://localhost:8080/'
   },
   // 打包模式 production / development / none
   mode: 'development',
