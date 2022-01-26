@@ -21,8 +21,8 @@ module.exports = {
   },
   // 出口配置
   output: {
-    // 目标文件名 
-    filename: '[name].[contenthash].js',
+    // 目标文件名 可以将打包文件输出到同一个文件下
+    filename: 'scripts/[name].[contenthash].js',
     // 目标路径 绝对路径
     path: path.resolve(__dirname, './dist'),
     // 打包前清理目标文件夹
