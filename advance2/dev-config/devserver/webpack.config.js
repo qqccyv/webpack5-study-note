@@ -10,6 +10,7 @@ module.exports = {
     new HtmlWebpackPlugin()
   ],
   devServer: {
+    host: '0.0.0.0', // 可以在局域网中访问
     historyApiFallback: true,
     // static: path.resolve(__dirname, './dist'),
     compress: true,
@@ -25,3 +26,6 @@ module.exports = {
     }
   }
 }
+
+
+
